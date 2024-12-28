@@ -11,10 +11,9 @@
 
 <body>
 
+    {{-- MODAL GUWEH --}}
 
-    {{-- ALERT GUWEH --}}
-
-    <div id="alert-1"
+    <!-- <div id="alert-1"
         class="alert-berhasil fixed transcenter animate-slideku flex p-4 mb-4 text-sm text-green-800 rounded-lg w-[30%] bg-green-50 dark:bg-gray-800 dark:text-green-400"
         role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -70,8 +69,8 @@
         </button>
         {{-- tombol close --}}
     </div>
-
-    {{-- ALERT GUWEH --}}
+    -->
+    {{-- MODAL GUWEH --}}
 
     <main class="mx-auto my-24 p-3 flex flex-col justify-center items-center w-[350px] rounded overflow-hidden shadow">
         <h1 class="font-bold">Selamat Datang di Aula Membership</h1>

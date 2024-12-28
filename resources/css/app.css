@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transcenter {
+    @apply absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%];
+}
+
+@keyframes slide {
+    from {
+        top: -10%;
+    }
+    to {
+        top: 10%;
+    }
+}
+.animate-slideku {
+    animation: slide 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}

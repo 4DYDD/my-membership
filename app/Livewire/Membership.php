@@ -12,6 +12,10 @@ class Membership extends Component
     public $hobi;
 
     public $deletedId = [];
+    public $editedId;
+    public $editedData;
+
+
 
     public $datas;
 
@@ -26,6 +30,34 @@ class Membership extends Component
         Member::create($validatedData);
 
         return redirect('/');
+    }
+
+    public function update()
+    {
+        $validatedData = $this->validate([
+            'nama' => 'required|string',
+            'kekayaan' => 'required|integer',
+            'hobi' => 'required|string'
+        ]);
+
+        Member::where('id', $this->editedId)->update($validatedData);
+        return redirect('/');
+    }
+
+    public function closeEditModal()
+    {
+        $this->editedId = null;
+        $this->editedData = null;
+    }
+
+    public function editDialog($id)
+    {
+        $this->editedId = $id;
+        $this->editedData = Member::where('id', $id)->first();
+
+        $this->nama = $this->editedData->nama;
+        $this->kekayaan = $this->editedData->kekayaan;
+        $this->hobi = $this->editedData->hobi;
     }
 
     public function delete($id)

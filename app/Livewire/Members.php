@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\Member;
 use Livewire\Component;
 
-class Membership extends Component
+class Members extends Component
 {
     public $nama;
     public $kekayaan;
@@ -15,17 +15,21 @@ class Membership extends Component
     public $editedId;
     public $editedData;
 
+    public $status = false;
+
 
 
     public $datas;
 
     public function create()
     {
-        $validatedData = $this->validate([
+        $rules = [
             'nama' => 'required|string',
             'kekayaan' => 'required|integer',
             'hobi' => 'required|string'
-        ]);
+        ];
+
+        $validatedData = $this->validate($rules);
 
         Member::create($validatedData);
 
@@ -82,6 +86,6 @@ class Membership extends Component
     public function render()
     {
         $this->datas = Member::orderBy('id', 'asc')->get();
-        return view('livewire.membership');
+        return view('livewire.members');
     }
 }

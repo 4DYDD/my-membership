@@ -14,14 +14,14 @@
             <div>
                 <span class="font-medium">"ANUNYA" Gagal :</span>
                 <ul class="mt-1.5 list-disc list-inside">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
                     @endforeach
                 </ul>
             </div>
 
             {{-- tombol close --}}
-            <button type="button"
+            {{-- <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
                 data-dismiss-target="#alert-2" aria-label="Close">
                 <span class="sr-only">Close</span>
@@ -30,10 +30,11 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
-            </button>
+            </button> --}}
             {{-- tombol close --}}
         </div>
     @endif
+
     {{-- ALERT GUWEH --}}
 
 
@@ -73,7 +74,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form class="p-4 md:p-5" novalidate>
+                    <form class="p-4 md:p-5" wire:submit="create">
                         <div class="grid grid-cols-2 gap-4 mb-4">
 
                             <div class="col-span-2">
@@ -81,7 +82,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                                 <input type="text" wire:model='nama' id="nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Masukkan nama" required="">
+                                    placeholder="Masukkan nama">
                             </div>
 
                             <div class="col-span-2 ">
@@ -89,7 +90,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kekayaan</label>
                                 <input type="number" wire:model='kekayaan' id="kekayaan"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="$2999" required="">
+                                    placeholder="$2999">
                             </div>
 
                             <div class="col-span-2">
@@ -102,7 +103,7 @@
                             </div>
 
                         </div>
-                        <button wire:click='create()' type="submit"
+                        <button type="submit"
                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="w-5 h-5 me-1 -ms-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +122,7 @@
 
 
         <!-- Update modal -->
-        @if ($editedData)
+        {{-- @if ($editedData)
             <div id="update-modal" tabindex="-1" aria-hidden="true"
                 class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative w-full max-w-md max-h-full p-4">
@@ -188,7 +189,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
         <!-- Update modal -->
 
         {{-- ALERT GUWEH --}}
@@ -274,7 +275,8 @@
 
                 @if (count($datas) > 0)
                     @foreach ($datas as $key => $value)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr wire:key="{{ $value->id }}"
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-3 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}

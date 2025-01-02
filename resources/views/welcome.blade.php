@@ -72,6 +72,8 @@
     -->
     {{-- MODAL GUWEH --}}
 
+
+
     <main class="mx-auto my-24 p-3 flex flex-col justify-center items-center w-[350px] rounded overflow-hidden shadow">
         <h1 class="font-bold">Selamat Datang di Aula Membership</h1>
         <p class="">awekroawer</p>
@@ -79,7 +81,7 @@
 
     {{-- TABLE GUWEH --}}
 
-    @livewire('membership')
+    @livewire('members')
 
     {{-- TABLE GUWEH --}}
 
